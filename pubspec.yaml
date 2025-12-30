@@ -1,0 +1,26 @@
+name: ffi_jpeg_encode
+description: "Fast JPEG encoding via FFI with SIMD optimizations for Android and iOS."
+version: 0.0.1
+
+environment:
+  sdk: ^3.9.2
+  flutter: ">=3.3.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  ffi: ^2.1.4
+
+dev_dependencies:
+  ffigen: ^20.1.1
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        ffiPlugin: true
+      ios:
+        ffiPlugin: true
