@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.0.2
+## 1.0.0
 
 - **Breaking**: Now requires Dart 3.10+ and Flutter 3.38+.
 - Migrated to Flutter native assets using `hooks` and `native_toolchain_c`.

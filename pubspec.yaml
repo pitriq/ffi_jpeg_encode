@@ -1,6 +1,6 @@
 name: ffi_jpeg_encode
 description: "Fast JPEG encoding via FFI with SIMD optimizations for Android and iOS."
-version: 0.0.2
+version: 1.0.0
 homepage: https://github.com/pitriq/ffi_jpeg_encode
 
 environment:
