@@ -1,0 +1,6 @@
+# Changelog
+
+## 0.0.1
+
+- Initial release with FFI JPEG encoding support.
+
