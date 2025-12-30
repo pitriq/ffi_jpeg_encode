@@ -1,5 +1,4 @@
 import 'dart:ffi' as ffi;
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:ffi/ffi.dart';
@@ -60,7 +59,7 @@ Uint8List encodeJpegToBytes(
     pixelsPtr.asTypedList(pixels.length).setAll(0, pixels);
 
     // Call native encoding
-    final result = _bindings.jo_encode_jpg_to_mem(
+    final result = jo_encode_jpg_to_mem(
       pixelsPtr.cast(),
       width,
       height,
@@ -83,29 +82,10 @@ Uint8List encodeJpegToBytes(
   } finally {
     malloc.free(pixelsPtr);
     if (nativeBuffer != null) {
-      _bindings.jo_free_buffer(nativeBuffer);
+      jo_free_buffer(nativeBuffer);
     }
   }
 }
-
-const String _libName = 'ffi_jpeg_encode';
-
-/// The dynamic library in which the symbols for [FfiJpegEncodeBindings] can be found.
-final ffi.DynamicLibrary _dylib = () {
-  if (Platform.isMacOS || Platform.isIOS) {
-    return ffi.DynamicLibrary.open('$_libName.framework/$_libName');
-  }
-  if (Platform.isAndroid || Platform.isLinux) {
-    return ffi.DynamicLibrary.open('lib$_libName.so');
-  }
-  if (Platform.isWindows) {
-    return ffi.DynamicLibrary.open('$_libName.dll');
-  }
-  throw UnsupportedError('Unknown platform: ${Platform.operatingSystem}');
-}();
-
-/// The bindings to the native functions in [_dylib].
-final _bindings = FfiJpegEncodeBindings(_dylib);
 
 class JpegEncodingException implements Exception {
   const JpegEncodingException(this.message);

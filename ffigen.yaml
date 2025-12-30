@@ -17,3 +17,5 @@ preamble: |
 comments:
   style: any
   length: full
+ffi-native:
+  asset-id: 'package:ffi_jpeg_encode/ffi_jpeg_encode.dart'
